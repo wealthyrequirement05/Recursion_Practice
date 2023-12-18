@@ -1,0 +1,19 @@
+def get_substrings(text, substr_list2):
+    def get_inner(txt, substr_list1):
+        # global i
+        # global substr_list1
+        substr_list1.append(txt)
+        if len(txt) == 1:
+            return substr_list1
+        else:
+            return get_inner(txt[:-1], substr_list1)
+
+    if len(text) == 1:
+
+        substr_list2.append(text)
+        return substr_list2
+    else:
+        substr_list2 = substr_list2 + get_inner(text, [])
+        return (get_substrings(text[1:], substr_list2))
+
+print(get_substrings("Funny", []))
